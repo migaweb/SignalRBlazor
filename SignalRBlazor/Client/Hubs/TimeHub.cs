@@ -5,27 +5,22 @@ using System.Threading.Tasks;
 
 namespace SignalRBlazor.Client.Hubs
 {
-  public class ClientViewHub : IAsyncDisposable
+  public class TimeHub : IAsyncDisposable
   {
     private readonly NavigationManager _navigationManager;
     private HubConnection _hubConnection;
 
-    public ClientViewHub(NavigationManager navigationManager, Action<int> viewCountUpdate)
+    public TimeHub(NavigationManager navigationManager, Action<string> timeUpdated)
     {
       _navigationManager = navigationManager;
 
-      initHubConnection(viewCountUpdate);
+      initHubConnection(timeUpdated);
     }
 
     public async Task Start()
     {
       await _hubConnection.StartAsync();
       Console.WriteLine("Hub is started");
-    }
-
-    public async Task Notify()
-    {
-      await _hubConnection.SendAsync("notifyWatching");
     }
 
     private Task hubConnectionReconnected(string arg)
@@ -47,17 +42,17 @@ namespace SignalRBlazor.Client.Hubs
       return Task.CompletedTask;
     }
 
-    private void initHubConnection(Action<int> viewCountUpdate)
+    private void initHubConnection(Action<string> timeUpdated)
     {
       _hubConnection = new HubConnectionBuilder()
-            .WithUrl(_navigationManager.ToAbsoluteUri("/viewhub"))
+            .WithUrl(_navigationManager.ToAbsoluteUri("/timehub"))
             .Build();
 
       _hubConnection.Reconnected += hubConnectionReconnected;
       _hubConnection.Reconnecting += hubConnectionReconnecting;
       _hubConnection.Closed += hubConnectionClosed;
 
-      _hubConnection.On<int>("viewCountUpdate", viewCountUpdate);
+      _hubConnection.On<string>("updateCurrentTime", timeUpdated);
     }
 
     public async ValueTask DisposeAsync()
