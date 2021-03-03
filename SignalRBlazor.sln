@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRBlazor.Client", "Sig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRBlazor.Shared", "SignalRBlazor\Shared\SignalRBlazor.Shared.csproj", "{33EE3922-6173-47E1-B39C-0DF6398BF508}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRBlazor.Console", "SignalRBlazor.Console\SignalRBlazor.Console.csproj", "{F464767D-FEBE-4F4C-AF18-5B659F6AB950}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{33EE3922-6173-47E1-B39C-0DF6398BF508}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33EE3922-6173-47E1-B39C-0DF6398BF508}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33EE3922-6173-47E1-B39C-0DF6398BF508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F464767D-FEBE-4F4C-AF18-5B659F6AB950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F464767D-FEBE-4F4C-AF18-5B659F6AB950}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F464767D-FEBE-4F4C-AF18-5B659F6AB950}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F464767D-FEBE-4F4C-AF18-5B659F6AB950}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
