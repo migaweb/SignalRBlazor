@@ -1,0 +1,25 @@
+﻿<h3>ReportsList</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Company</th>
+            <th>Username</th>
+            <th>Message</th>
+            <th>Page</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    @foreach (var report in Reports)
+    {
+        <tr>
+            <td>@(report.Id)</td>
+            <td>@(report.CompanyName)</td>
+            <td>@(report.Username)</td>
+            <td>@(report.Message)</td>
+            <td>@(report.Page)</td>
+            <td>@(report.Status)</td>
+        </tr>
+    }
+</table>

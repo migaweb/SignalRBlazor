@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SignalRBlazor.Server.HostedServices;
 using SignalRBlazor.Server.Hubs;
+using SignalRBlazor.Shared;
 using System.Linq;
 
 namespace SignalRBlazor.Server
@@ -26,8 +27,11 @@ namespace SignalRBlazor.Server
     {
       services.AddSignalR();
       services.AddHostedService<TimeService>();
+      
       services.AddControllersWithViews();
       services.AddRazorPages();
+
+      services.AddSingleton<ReportStateQueue>();
 
       services.AddResponseCompression(opts =>
       {
@@ -66,6 +70,7 @@ namespace SignalRBlazor.Server
         endpoints.MapFallbackToFile("index.html");
         endpoints.MapHub<ViewHub>("/viewhub");
         endpoints.MapHub<TimeHub>("/timehub");
+        endpoints.MapHub<CompHub>("/comphub");
       });
     }
   }

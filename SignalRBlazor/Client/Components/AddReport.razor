@@ -1,0 +1,22 @@
+﻿<h3>AddReport</h3>
+<div><input type="text" @bind="Report.CompanyName" placeholder="@nameof(Report.CompanyName)" /></div>
+<div><input type="text" @bind="Report.Username" placeholder="@nameof(Report.Username)" /></div>
+<div><input type="text" @bind="Report.Message" placeholder="@nameof(Report.Message)" /></div>
+
+<div>
+    <select @bind="Report.Page">
+        <option selected value="Home">Home</option>
+        <option value="About">About</option>
+        <option value="Help">Help</option>
+        <option value="Order">Order</option>
+    </select>
+</div>
+<div>
+    <select @bind="Report.Status">
+        @foreach (var stat in Enum.GetValues(typeof(SignalRBlazor.Shared.Status)))
+        {
+            <option value="@stat">@stat</option>
+        }
+    </select>
+</div>
+        <button @onclick="OnReportSubmit">Submit report</button>
